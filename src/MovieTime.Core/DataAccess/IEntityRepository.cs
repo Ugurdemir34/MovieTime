@@ -16,7 +16,7 @@ namespace MovieTime.Core.DataAccess
         Task<IList<T>> GetListAsync(Expression<Func<T, bool>> filter, params Expression<Func<T, object>>[] includeProperties);
         Task<T> AddAsync(T entity);
         Task<T> UpdateAsync(T entity);
-        Task<T> DeleteAsync(T entity);
-        Task<T> AddRange(List<T> Entities);
+        Task DeleteAsync(T entity);
+       // Task<T> AddRangeAsync(List<T> Entities);
     }
 }
