@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 
 namespace MovieTime.Entities.Concrete
 {
-    public class MovieTag:BaseEntity,IEntity
+    public class Tag:BaseEntity,IEntity
     {
         public string Name { get; set; }
+        public List<Movie> Movies { get; set; }
     }
 }

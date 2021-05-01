@@ -17,8 +17,8 @@ namespace MovieTime.Entities.Concrete
         public string Actors { get; set; }
         //Navigation Property
         public List<Category> Categories { get; set; }
-        public List<MovieType> MovieTypes { get; set; }
-        public List<MovieTag> MovieTags { get; set; }
+        public List<Genre> Genres { get; set; }
+        public List<Tag> Tags { get; set; }
         public List<Comment> Comments { get; set; }
     }
 }
