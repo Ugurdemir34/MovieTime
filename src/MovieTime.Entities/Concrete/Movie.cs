@@ -1,4 +1,5 @@
-﻿using MovieTime.Entities.Shared;
+﻿using MovieTime.Core.Entities;
+using MovieTime.Entities.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MovieTime.Entities.Concrete
 {
-    public class Movie : BaseEntity
+    public class Movie : BaseEntity,IEntity
     {
         public string Title { get; set; }
         public string Director { get; set; }

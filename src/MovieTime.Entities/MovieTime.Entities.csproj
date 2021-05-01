@@ -8,4 +8,8 @@
     <Folder Include="Dtos\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MovieTime.Core\MovieTime.Core.csproj" />
+  </ItemGroup>
+
 </Project>
