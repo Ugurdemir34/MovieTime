@@ -19,6 +19,21 @@ namespace MovieTime.DataAccess.Concrete.Mappings
             builder.Property(t => t.Description).HasMaxLength(5000);
             builder.Property(t => t.CreationDate).IsRequired();;
             builder.ToTable("Tags");
+
+            builder.HasData(new Tag
+            {
+               CreationDate = DateTime.Now,
+               Id = Guid.NewGuid(),
+               Name = "Harry Potter Serisi",
+               Description = "HarryPotter Tagi"              
+            },
+            new Tag {
+                CreationDate = DateTime.Now,
+                Id = Guid.NewGuid(),
+                Name = "Harry Potter Filmleri İzle",
+                Description = "HarryPotter Tagi2"
+            }
+            );
         }
     }
 }

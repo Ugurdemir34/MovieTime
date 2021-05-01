@@ -19,6 +19,22 @@ namespace MovieTime.DataAccess.Concrete.Mappings
             builder.Property(m => m.Description).HasMaxLength(5000);
             builder.Property(m => m.CreationDate).IsRequired();
             builder.ToTable("Genres");
+
+            builder.HasData(new Genre
+            {
+                CreationDate = DateTime.Now,
+                Id = Guid.NewGuid(),
+                Name = "Aile",
+                Description = "Aile Filmleri"
+            },
+           new Genre
+           {
+               CreationDate = DateTime.Now,
+               Id = Guid.NewGuid(),
+               Name = "Fantastik",
+               Description = "Fantastik Filmler"
+           }
+           );
         }
     }
 }

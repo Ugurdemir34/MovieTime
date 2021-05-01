@@ -19,6 +19,21 @@ namespace MovieTime.DataAccess.Concrete.Mappings
             builder.Property(m => m.Description).HasMaxLength(5000);
             builder.Property(m => m.CreationDate).IsRequired();
             builder.ToTable("Categories");
+            builder.HasData(new Category
+            {
+                CreationDate = DateTime.Now,
+                Id = Guid.NewGuid(),
+                Name = "Yabancı",
+                Description = "Yabancı Filmler"
+            },
+           new Category
+           {
+               CreationDate = DateTime.Now,
+               Id = Guid.NewGuid(),
+               Name = "4K",
+               Description = "4K Filmler"
+           }
+           );
         }
     }
 }

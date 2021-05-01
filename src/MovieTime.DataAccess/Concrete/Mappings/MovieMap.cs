@@ -23,7 +23,9 @@ namespace MovieTime.DataAccess.Concrete.Mappings
             builder.Property(m => m.CreationDate).IsRequired();
             builder.Property(m => m.Thumbnail).IsRequired();
             builder.Property(m => m.Date).IsRequired();
-            builder.ToTable("Movies");           
+            builder.ToTable("Movies");   
+            
+
         }
     }
 }
