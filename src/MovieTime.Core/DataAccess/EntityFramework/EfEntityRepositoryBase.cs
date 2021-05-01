@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MovieTime.Core.DataAccess.EntityFramework
 {
-    class EfEntityRepositoryBase<TEntity, TContext> : IEntityRepository<TEntity>
+    public class EfEntityRepositoryBase<TEntity, TContext> : IEntityRepository<TEntity>
         where TEntity : class, IEntity, new()
         where TContext : DbContext, new()
     {
