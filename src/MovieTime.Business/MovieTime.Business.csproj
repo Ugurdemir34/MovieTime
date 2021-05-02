@@ -4,4 +4,14 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="7.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MovieTime.Core\MovieTime.Core.csproj" />
+    <ProjectReference Include="..\MovieTime.DataAccess\MovieTime.DataAccess.csproj" />
+    <ProjectReference Include="..\MovieTime.Entities\MovieTime.Entities.csproj" />
+  </ItemGroup>
+
 </Project>

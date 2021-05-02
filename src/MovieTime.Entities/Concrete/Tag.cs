@@ -6,6 +6,6 @@ namespace MovieTime.Entities.Concrete
     public class Tag:BaseEntity,IEntity
     {
         public string Name { get; set; }
-        public List<Movie> Movies { get; set; }
+        public ICollection<MovieTag> MovieTags { get; set; }
     }
 }

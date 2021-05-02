@@ -11,6 +11,6 @@ namespace MovieTime.Entities.Concrete
     public class Genre:BaseEntity,IEntity
     {
         public string Name { get; set; }
-        public List<Movie> Movies { get; set; }
+        public ICollection<MovieGenre> MovieGenres { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.Json.Serialization;
 
 namespace MovieTime.Entities.Concrete
 {
@@ -6,7 +7,8 @@ namespace MovieTime.Entities.Concrete
     {
         public Guid MovieId { get; set; }
         public Guid GenreId { get; set; }
-        public Movie Movie { get; set; }
+        [JsonIgnore]   
+        public Movie Movie { get; set; }  
         public Genre Genre { get; set; }
     }
 }

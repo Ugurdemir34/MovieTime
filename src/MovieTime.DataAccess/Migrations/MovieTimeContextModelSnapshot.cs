@@ -77,15 +77,15 @@ namespace MovieTime.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("06ffa08f-902b-422d-ad4f-6b657645b98c"),
-                            CreationDate = new DateTime(2021, 5, 2, 1, 27, 59, 916, DateTimeKind.Local).AddTicks(4067),
+                            Id = new Guid("a1d7a730-c896-4413-b4fc-7041cd3d9673"),
+                            CreationDate = new DateTime(2021, 5, 2, 4, 56, 31, 824, DateTimeKind.Local).AddTicks(6481),
                             Description = "Yabancı Filmler",
                             Name = "Yabancı"
                         },
                         new
                         {
-                            Id = new Guid("327c43ed-7687-469f-ac27-5f97283dd3d0"),
-                            CreationDate = new DateTime(2021, 5, 2, 1, 27, 59, 919, DateTimeKind.Local).AddTicks(2993),
+                            Id = new Guid("fcef9821-ac0e-4fdf-8391-4d3d2c97988c"),
+                            CreationDate = new DateTime(2021, 5, 2, 4, 56, 31, 825, DateTimeKind.Local).AddTicks(9986),
                             Description = "4K Filmler",
                             Name = "4K"
                         });
@@ -144,15 +144,15 @@ namespace MovieTime.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("7a05bc36-9e90-4513-b463-e85e1c6757bd"),
-                            CreationDate = new DateTime(2021, 5, 2, 1, 27, 59, 922, DateTimeKind.Local).AddTicks(2820),
+                            Id = new Guid("54508354-a05b-4a1e-a8bd-e3102e58b4b0"),
+                            CreationDate = new DateTime(2021, 5, 2, 4, 56, 31, 828, DateTimeKind.Local).AddTicks(7603),
                             Description = "Aile Filmleri",
                             Name = "Aile"
                         },
                         new
                         {
-                            Id = new Guid("3b73b3cd-944c-4f5c-a4c2-c764d17f1681"),
-                            CreationDate = new DateTime(2021, 5, 2, 1, 27, 59, 922, DateTimeKind.Local).AddTicks(3431),
+                            Id = new Guid("d9a65657-9b11-44a5-bb6d-63bcefedd951"),
+                            CreationDate = new DateTime(2021, 5, 2, 4, 56, 31, 828, DateTimeKind.Local).AddTicks(8198),
                             Description = "Fantastik Filmler",
                             Name = "Fantastik"
                         });
@@ -185,14 +185,8 @@ namespace MovieTime.DataAccess.Migrations
                         .HasMaxLength(70)
                         .HasColumnType("nvarchar(70)");
 
-                    b.Property<Guid?>("GenreId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<double>("Imdb")
                         .HasColumnType("float");
-
-                    b.Property<Guid?>("TagId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Thumbnail")
                         .IsRequired()
@@ -206,10 +200,6 @@ namespace MovieTime.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AdminId");
-
-                    b.HasIndex("GenreId");
-
-                    b.HasIndex("TagId");
 
                     b.ToTable("Movies");
                 });
@@ -284,15 +274,15 @@ namespace MovieTime.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("ef19f7e9-13d5-4171-ba03-edd1ed3cc5be"),
-                            CreationDate = new DateTime(2021, 5, 2, 1, 27, 59, 923, DateTimeKind.Local).AddTicks(2961),
+                            Id = new Guid("8c8a76ed-e98c-4ee5-b168-528676129c87"),
+                            CreationDate = new DateTime(2021, 5, 2, 4, 56, 31, 829, DateTimeKind.Local).AddTicks(7445),
                             Description = "HarryPotter Tagi",
                             Name = "Harry Potter Serisi"
                         },
                         new
                         {
-                            Id = new Guid("b419f1b3-2935-4828-82b5-c63eeff081c6"),
-                            CreationDate = new DateTime(2021, 5, 2, 1, 27, 59, 923, DateTimeKind.Local).AddTicks(3545),
+                            Id = new Guid("5ae0429a-792c-43d5-9332-f815ac668174"),
+                            CreationDate = new DateTime(2021, 5, 2, 4, 56, 31, 829, DateTimeKind.Local).AddTicks(8037),
                             Description = "HarryPotter Tagi2",
                             Name = "Harry Potter Filmleri İzle"
                         });
@@ -311,21 +301,13 @@ namespace MovieTime.DataAccess.Migrations
                         .WithMany()
                         .HasForeignKey("AdminId");
 
-                    b.HasOne("MovieTime.Entities.Concrete.Genre", null)
-                        .WithMany("Movies")
-                        .HasForeignKey("GenreId");
-
-                    b.HasOne("MovieTime.Entities.Concrete.Tag", null)
-                        .WithMany("Movies")
-                        .HasForeignKey("TagId");
-
                     b.Navigation("Admin");
                 });
 
             modelBuilder.Entity("MovieTime.Entities.Concrete.MovieCategory", b =>
                 {
                     b.HasOne("MovieTime.Entities.Concrete.Category", "Category")
-                        .WithMany()
+                        .WithMany("MovieCategories")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -344,7 +326,7 @@ namespace MovieTime.DataAccess.Migrations
             modelBuilder.Entity("MovieTime.Entities.Concrete.MovieGenre", b =>
                 {
                     b.HasOne("MovieTime.Entities.Concrete.Genre", "Genre")
-                        .WithMany()
+                        .WithMany("MovieGenres")
                         .HasForeignKey("GenreId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -369,7 +351,7 @@ namespace MovieTime.DataAccess.Migrations
                         .IsRequired();
 
                     b.HasOne("MovieTime.Entities.Concrete.Tag", "Tag")
-                        .WithMany()
+                        .WithMany("MovieTags")
                         .HasForeignKey("TagId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -379,9 +361,14 @@ namespace MovieTime.DataAccess.Migrations
                     b.Navigation("Tag");
                 });
 
+            modelBuilder.Entity("MovieTime.Entities.Concrete.Category", b =>
+                {
+                    b.Navigation("MovieCategories");
+                });
+
             modelBuilder.Entity("MovieTime.Entities.Concrete.Genre", b =>
                 {
-                    b.Navigation("Movies");
+                    b.Navigation("MovieGenres");
                 });
 
             modelBuilder.Entity("MovieTime.Entities.Concrete.Movie", b =>
@@ -397,7 +384,7 @@ namespace MovieTime.DataAccess.Migrations
 
             modelBuilder.Entity("MovieTime.Entities.Concrete.Tag", b =>
                 {
-                    b.Navigation("Movies");
+                    b.Navigation("MovieTags");
                 });
 #pragma warning restore 612, 618
         }
