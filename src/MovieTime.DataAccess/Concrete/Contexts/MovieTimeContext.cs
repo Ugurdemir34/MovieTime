@@ -20,6 +20,20 @@ namespace MovieTime.DataAccess.Concrete.Contexts
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Category>()
+                .HasMany(left => left.Movies)
+                .WithMany(right => right.Categories)
+                .UsingEntity(join => join.ToTable("MovieCategories"));
+
+            modelBuilder.Entity<Genre>()
+              .HasMany(left => left.Movies)
+              .WithMany(right => right.Genres)
+              .UsingEntity(join => join.ToTable("MovieGenres"));
+
+            modelBuilder.Entity<Tag>()
+              .HasMany(left => left.Movies)
+              .WithMany(right => right.Tags)
+              .UsingEntity(join => join.ToTable("MovieTags"));
             ///*Movie Category*/
             //modelBuilder.Entity<MovieCategory>()
             //    .HasKey(x => new { x.CategoryId, x.MovieId });
