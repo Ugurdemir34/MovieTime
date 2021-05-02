@@ -19,6 +19,51 @@ namespace MovieTime.DataAccess.Migrations
                 .HasAnnotation("ProductVersion", "5.0.5")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("CategoryMovie", b =>
+                {
+                    b.Property<Guid>("CategoriesId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("MoviesId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("CategoriesId", "MoviesId");
+
+                    b.HasIndex("MoviesId");
+
+                    b.ToTable("CategoryMovie");
+                });
+
+            modelBuilder.Entity("GenreMovie", b =>
+                {
+                    b.Property<Guid>("GenresId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("MoviesId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("GenresId", "MoviesId");
+
+                    b.HasIndex("MoviesId");
+
+                    b.ToTable("GenreMovie");
+                });
+
+            modelBuilder.Entity("MovieTag", b =>
+                {
+                    b.Property<Guid>("MoviesId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("TagsId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("MoviesId", "TagsId");
+
+                    b.HasIndex("TagsId");
+
+                    b.ToTable("MovieTag");
+                });
+
             modelBuilder.Entity("MovieTime.Entities.Concrete.Admin", b =>
                 {
                     b.Property<Guid>("Id")
@@ -77,15 +122,15 @@ namespace MovieTime.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("a1d7a730-c896-4413-b4fc-7041cd3d9673"),
-                            CreationDate = new DateTime(2021, 5, 2, 4, 56, 31, 824, DateTimeKind.Local).AddTicks(6481),
+                            Id = new Guid("2ccaeb78-b0ce-49e3-887e-18ddd7ae57e7"),
+                            CreationDate = new DateTime(2021, 5, 2, 8, 10, 23, 106, DateTimeKind.Local).AddTicks(6189),
                             Description = "Yabancı Filmler",
                             Name = "Yabancı"
                         },
                         new
                         {
-                            Id = new Guid("fcef9821-ac0e-4fdf-8391-4d3d2c97988c"),
-                            CreationDate = new DateTime(2021, 5, 2, 4, 56, 31, 825, DateTimeKind.Local).AddTicks(9986),
+                            Id = new Guid("4ef02072-a4c8-441e-9c2a-b04c4a0f9ec1"),
+                            CreationDate = new DateTime(2021, 5, 2, 8, 10, 23, 108, DateTimeKind.Local).AddTicks(662),
                             Description = "4K Filmler",
                             Name = "4K"
                         });
@@ -144,15 +189,15 @@ namespace MovieTime.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("54508354-a05b-4a1e-a8bd-e3102e58b4b0"),
-                            CreationDate = new DateTime(2021, 5, 2, 4, 56, 31, 828, DateTimeKind.Local).AddTicks(7603),
+                            Id = new Guid("4b115b0e-8b02-4833-ae50-9b7b2a2f537d"),
+                            CreationDate = new DateTime(2021, 5, 2, 8, 10, 23, 111, DateTimeKind.Local).AddTicks(1957),
                             Description = "Aile Filmleri",
                             Name = "Aile"
                         },
                         new
                         {
-                            Id = new Guid("d9a65657-9b11-44a5-bb6d-63bcefedd951"),
-                            CreationDate = new DateTime(2021, 5, 2, 4, 56, 31, 828, DateTimeKind.Local).AddTicks(8198),
+                            Id = new Guid("58412ea7-36eb-4c94-9032-c03860030df9"),
+                            CreationDate = new DateTime(2021, 5, 2, 8, 10, 23, 111, DateTimeKind.Local).AddTicks(2555),
                             Description = "Fantastik Filmler",
                             Name = "Fantastik"
                         });
@@ -204,51 +249,6 @@ namespace MovieTime.DataAccess.Migrations
                     b.ToTable("Movies");
                 });
 
-            modelBuilder.Entity("MovieTime.Entities.Concrete.MovieCategory", b =>
-                {
-                    b.Property<Guid>("CategoryId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("MovieId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("CategoryId", "MovieId");
-
-                    b.HasIndex("MovieId");
-
-                    b.ToTable("MovieCategories");
-                });
-
-            modelBuilder.Entity("MovieTime.Entities.Concrete.MovieGenre", b =>
-                {
-                    b.Property<Guid>("GenreId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("MovieId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("GenreId", "MovieId");
-
-                    b.HasIndex("MovieId");
-
-                    b.ToTable("MovieGenres");
-                });
-
-            modelBuilder.Entity("MovieTime.Entities.Concrete.MovieTag", b =>
-                {
-                    b.Property<Guid>("TagId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("MovieId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("TagId", "MovieId");
-
-                    b.HasIndex("MovieId");
-
-                    b.ToTable("MovieTags");
-                });
-
             modelBuilder.Entity("MovieTime.Entities.Concrete.Tag", b =>
                 {
                     b.Property<Guid>("Id")
@@ -274,18 +274,63 @@ namespace MovieTime.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("8c8a76ed-e98c-4ee5-b168-528676129c87"),
-                            CreationDate = new DateTime(2021, 5, 2, 4, 56, 31, 829, DateTimeKind.Local).AddTicks(7445),
+                            Id = new Guid("ae9b7b9d-7888-4bca-827e-c50b2e5755a7"),
+                            CreationDate = new DateTime(2021, 5, 2, 8, 10, 23, 112, DateTimeKind.Local).AddTicks(2076),
                             Description = "HarryPotter Tagi",
                             Name = "Harry Potter Serisi"
                         },
                         new
                         {
-                            Id = new Guid("5ae0429a-792c-43d5-9332-f815ac668174"),
-                            CreationDate = new DateTime(2021, 5, 2, 4, 56, 31, 829, DateTimeKind.Local).AddTicks(8037),
+                            Id = new Guid("fe654997-0c93-4125-8bfb-8d550c9c80ef"),
+                            CreationDate = new DateTime(2021, 5, 2, 8, 10, 23, 112, DateTimeKind.Local).AddTicks(2658),
                             Description = "HarryPotter Tagi2",
                             Name = "Harry Potter Filmleri İzle"
                         });
+                });
+
+            modelBuilder.Entity("CategoryMovie", b =>
+                {
+                    b.HasOne("MovieTime.Entities.Concrete.Category", null)
+                        .WithMany()
+                        .HasForeignKey("CategoriesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MovieTime.Entities.Concrete.Movie", null)
+                        .WithMany()
+                        .HasForeignKey("MoviesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("GenreMovie", b =>
+                {
+                    b.HasOne("MovieTime.Entities.Concrete.Genre", null)
+                        .WithMany()
+                        .HasForeignKey("GenresId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MovieTime.Entities.Concrete.Movie", null)
+                        .WithMany()
+                        .HasForeignKey("MoviesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("MovieTag", b =>
+                {
+                    b.HasOne("MovieTime.Entities.Concrete.Movie", null)
+                        .WithMany()
+                        .HasForeignKey("MoviesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MovieTime.Entities.Concrete.Tag", null)
+                        .WithMany()
+                        .HasForeignKey("TagsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("MovieTime.Entities.Concrete.Comment", b =>
@@ -304,87 +349,9 @@ namespace MovieTime.DataAccess.Migrations
                     b.Navigation("Admin");
                 });
 
-            modelBuilder.Entity("MovieTime.Entities.Concrete.MovieCategory", b =>
-                {
-                    b.HasOne("MovieTime.Entities.Concrete.Category", "Category")
-                        .WithMany("MovieCategories")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MovieTime.Entities.Concrete.Movie", "Movie")
-                        .WithMany("MovieCategories")
-                        .HasForeignKey("MovieId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
-
-                    b.Navigation("Movie");
-                });
-
-            modelBuilder.Entity("MovieTime.Entities.Concrete.MovieGenre", b =>
-                {
-                    b.HasOne("MovieTime.Entities.Concrete.Genre", "Genre")
-                        .WithMany("MovieGenres")
-                        .HasForeignKey("GenreId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MovieTime.Entities.Concrete.Movie", "Movie")
-                        .WithMany("MovieGenres")
-                        .HasForeignKey("MovieId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Genre");
-
-                    b.Navigation("Movie");
-                });
-
-            modelBuilder.Entity("MovieTime.Entities.Concrete.MovieTag", b =>
-                {
-                    b.HasOne("MovieTime.Entities.Concrete.Movie", "Movie")
-                        .WithMany("MovieTags")
-                        .HasForeignKey("MovieId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MovieTime.Entities.Concrete.Tag", "Tag")
-                        .WithMany("MovieTags")
-                        .HasForeignKey("TagId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Movie");
-
-                    b.Navigation("Tag");
-                });
-
-            modelBuilder.Entity("MovieTime.Entities.Concrete.Category", b =>
-                {
-                    b.Navigation("MovieCategories");
-                });
-
-            modelBuilder.Entity("MovieTime.Entities.Concrete.Genre", b =>
-                {
-                    b.Navigation("MovieGenres");
-                });
-
             modelBuilder.Entity("MovieTime.Entities.Concrete.Movie", b =>
                 {
                     b.Navigation("Comments");
-
-                    b.Navigation("MovieCategories");
-
-                    b.Navigation("MovieGenres");
-
-                    b.Navigation("MovieTags");
-                });
-
-            modelBuilder.Entity("MovieTime.Entities.Concrete.Tag", b =>
-                {
-                    b.Navigation("MovieTags");
                 });
 #pragma warning restore 612, 618
         }

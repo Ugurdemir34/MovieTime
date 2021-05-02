@@ -20,15 +20,16 @@ namespace MovieTime.Business.Concrete
         }
         public async Task<IDataResult<MovieListDto>> GetAll()
         {
-            var movieList =await _movieDal.GetListAsync(null, m=>m.Admin,m=>m.Comments, m => m.MovieCategories, m => m.MovieTags, m => m.MovieGenres);
-            if (movieList.Count>-1)
-            {
-                return  new SuccessDataResult<MovieListDto>(new MovieListDto
-                {
-                    Movies = movieList.ToList(),                    
-                },Messages.MovieList);              
-            }
-            return new ErrorDataResult<MovieListDto>();
+             var movieList =await _movieDal.GetListAsync(null, m=>m.Admin,m=>m.Comments, m => m.Tags, m => m.Categories, m => m.Genres);
+             if (movieList.Count>-1)
+             {
+                 return  new SuccessDataResult<MovieListDto>(new MovieListDto
+                 {
+                     Movies = movieList.ToList(),                    
+                 },Messages.MovieList);              
+             }
+             return new ErrorDataResult<MovieListDto>();
+            
         }
     }
 }

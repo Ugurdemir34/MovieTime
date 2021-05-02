@@ -92,6 +92,30 @@ namespace MovieTime.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "CategoryMovie",
+                columns: table => new
+                {
+                    CategoriesId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    MoviesId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CategoryMovie", x => new { x.CategoriesId, x.MoviesId });
+                    table.ForeignKey(
+                        name: "FK_CategoryMovie_Categories_CategoriesId",
+                        column: x => x.CategoriesId,
+                        principalTable: "Categories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CategoryMovie_Movies_MoviesId",
+                        column: x => x.MoviesId,
+                        principalTable: "Movies",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Comments",
                 columns: table => new
                 {
@@ -113,72 +137,48 @@ namespace MovieTime.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MovieCategories",
+                name: "GenreMovie",
                 columns: table => new
                 {
-                    MovieId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    GenresId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    MoviesId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MovieCategories", x => new { x.CategoryId, x.MovieId });
+                    table.PrimaryKey("PK_GenreMovie", x => new { x.GenresId, x.MoviesId });
                     table.ForeignKey(
-                        name: "FK_MovieCategories_Categories_CategoryId",
-                        column: x => x.CategoryId,
-                        principalTable: "Categories",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_MovieCategories_Movies_MovieId",
-                        column: x => x.MovieId,
-                        principalTable: "Movies",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "MovieGenres",
-                columns: table => new
-                {
-                    MovieId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    GenreId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_MovieGenres", x => new { x.GenreId, x.MovieId });
-                    table.ForeignKey(
-                        name: "FK_MovieGenres_Genres_GenreId",
-                        column: x => x.GenreId,
+                        name: "FK_GenreMovie_Genres_GenresId",
+                        column: x => x.GenresId,
                         principalTable: "Genres",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_MovieGenres_Movies_MovieId",
-                        column: x => x.MovieId,
+                        name: "FK_GenreMovie_Movies_MoviesId",
+                        column: x => x.MoviesId,
                         principalTable: "Movies",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "MovieTags",
+                name: "MovieTag",
                 columns: table => new
                 {
-                    MovieId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    TagId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    MoviesId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    TagsId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MovieTags", x => new { x.TagId, x.MovieId });
+                    table.PrimaryKey("PK_MovieTag", x => new { x.MoviesId, x.TagsId });
                     table.ForeignKey(
-                        name: "FK_MovieTags_Movies_MovieId",
-                        column: x => x.MovieId,
+                        name: "FK_MovieTag_Movies_MoviesId",
+                        column: x => x.MoviesId,
                         principalTable: "Movies",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_MovieTags_Tags_TagId",
-                        column: x => x.TagId,
+                        name: "FK_MovieTag_Tags_TagsId",
+                        column: x => x.TagsId,
                         principalTable: "Tags",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -189,8 +189,8 @@ namespace MovieTime.DataAccess.Migrations
                 columns: new[] { "Id", "CreationDate", "Description", "Name" },
                 values: new object[,]
                 {
-                    { new Guid("a1d7a730-c896-4413-b4fc-7041cd3d9673"), new DateTime(2021, 5, 2, 4, 56, 31, 824, DateTimeKind.Local).AddTicks(6481), "Yabancı Filmler", "Yabancı" },
-                    { new Guid("fcef9821-ac0e-4fdf-8391-4d3d2c97988c"), new DateTime(2021, 5, 2, 4, 56, 31, 825, DateTimeKind.Local).AddTicks(9986), "4K Filmler", "4K" }
+                    { new Guid("2ccaeb78-b0ce-49e3-887e-18ddd7ae57e7"), new DateTime(2021, 5, 2, 8, 10, 23, 106, DateTimeKind.Local).AddTicks(6189), "Yabancı Filmler", "Yabancı" },
+                    { new Guid("4ef02072-a4c8-441e-9c2a-b04c4a0f9ec1"), new DateTime(2021, 5, 2, 8, 10, 23, 108, DateTimeKind.Local).AddTicks(662), "4K Filmler", "4K" }
                 });
 
             migrationBuilder.InsertData(
@@ -198,8 +198,8 @@ namespace MovieTime.DataAccess.Migrations
                 columns: new[] { "Id", "CreationDate", "Description", "Name" },
                 values: new object[,]
                 {
-                    { new Guid("54508354-a05b-4a1e-a8bd-e3102e58b4b0"), new DateTime(2021, 5, 2, 4, 56, 31, 828, DateTimeKind.Local).AddTicks(7603), "Aile Filmleri", "Aile" },
-                    { new Guid("d9a65657-9b11-44a5-bb6d-63bcefedd951"), new DateTime(2021, 5, 2, 4, 56, 31, 828, DateTimeKind.Local).AddTicks(8198), "Fantastik Filmler", "Fantastik" }
+                    { new Guid("4b115b0e-8b02-4833-ae50-9b7b2a2f537d"), new DateTime(2021, 5, 2, 8, 10, 23, 111, DateTimeKind.Local).AddTicks(1957), "Aile Filmleri", "Aile" },
+                    { new Guid("58412ea7-36eb-4c94-9032-c03860030df9"), new DateTime(2021, 5, 2, 8, 10, 23, 111, DateTimeKind.Local).AddTicks(2555), "Fantastik Filmler", "Fantastik" }
                 });
 
             migrationBuilder.InsertData(
@@ -207,9 +207,14 @@ namespace MovieTime.DataAccess.Migrations
                 columns: new[] { "Id", "CreationDate", "Description", "Name" },
                 values: new object[,]
                 {
-                    { new Guid("8c8a76ed-e98c-4ee5-b168-528676129c87"), new DateTime(2021, 5, 2, 4, 56, 31, 829, DateTimeKind.Local).AddTicks(7445), "HarryPotter Tagi", "Harry Potter Serisi" },
-                    { new Guid("5ae0429a-792c-43d5-9332-f815ac668174"), new DateTime(2021, 5, 2, 4, 56, 31, 829, DateTimeKind.Local).AddTicks(8037), "HarryPotter Tagi2", "Harry Potter Filmleri İzle" }
+                    { new Guid("ae9b7b9d-7888-4bca-827e-c50b2e5755a7"), new DateTime(2021, 5, 2, 8, 10, 23, 112, DateTimeKind.Local).AddTicks(2076), "HarryPotter Tagi", "Harry Potter Serisi" },
+                    { new Guid("fe654997-0c93-4125-8bfb-8d550c9c80ef"), new DateTime(2021, 5, 2, 8, 10, 23, 112, DateTimeKind.Local).AddTicks(2658), "HarryPotter Tagi2", "Harry Potter Filmleri İzle" }
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CategoryMovie_MoviesId",
+                table: "CategoryMovie",
+                column: "MoviesId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comments_MovieId",
@@ -217,14 +222,9 @@ namespace MovieTime.DataAccess.Migrations
                 column: "MovieId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MovieCategories_MovieId",
-                table: "MovieCategories",
-                column: "MovieId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_MovieGenres_MovieId",
-                table: "MovieGenres",
-                column: "MovieId");
+                name: "IX_GenreMovie_MoviesId",
+                table: "GenreMovie",
+                column: "MoviesId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Movies_AdminId",
@@ -232,24 +232,24 @@ namespace MovieTime.DataAccess.Migrations
                 column: "AdminId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MovieTags_MovieId",
-                table: "MovieTags",
-                column: "MovieId");
+                name: "IX_MovieTag_TagsId",
+                table: "MovieTag",
+                column: "TagsId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "CategoryMovie");
+
+            migrationBuilder.DropTable(
                 name: "Comments");
 
             migrationBuilder.DropTable(
-                name: "MovieCategories");
+                name: "GenreMovie");
 
             migrationBuilder.DropTable(
-                name: "MovieGenres");
-
-            migrationBuilder.DropTable(
-                name: "MovieTags");
+                name: "MovieTag");
 
             migrationBuilder.DropTable(
                 name: "Categories");

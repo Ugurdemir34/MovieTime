@@ -16,10 +16,10 @@ namespace MovieTime.Entities.Concrete
         public string Actors { get; set; }
         public string Thumbnail { get; set; }
         //Navigation Property       
-        public virtual ICollection<MovieCategory> MovieCategories { get; set; }    
-        public virtual ICollection<MovieTag> MovieTags { get; set; }      
-        public virtual ICollection<MovieGenre> MovieGenres { get; set; }
-        public virtual ICollection<Comment> Comments { get; set; }
+        public virtual List<Category> Categories { get; set; }    
+        public virtual List<Tag> Tags { get; set; }      
+        public virtual List<Genre> Genres { get; set; }
+        public virtual List<Comment> Comments { get; set; }
         public virtual Admin Admin { get; set; }
     }
 }

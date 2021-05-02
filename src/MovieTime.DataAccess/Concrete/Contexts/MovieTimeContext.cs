@@ -11,61 +11,61 @@ namespace MovieTime.DataAccess.Concrete.Contexts
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Tag> Tags { get; set; }
-        public DbSet<MovieTag> MovieTags { get; set; }
-        public DbSet<MovieCategory> MovieCategories { get; set; }
-        public DbSet<MovieGenre> MovieGenres { get; set; }
+        //public DbSet<MovieTag> MovieTags { get; set; }
+        //public DbSet<MovieCategory> MovieCategories { get; set; }
+        //public DbSet<MovieGenre> MovieGenres { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Server=DESKTOP-D77PTSR\UGUR;Database=MovieDB;Trusted_Connection=true");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            /*Movie Category*/
-            modelBuilder.Entity<MovieCategory>()
-                .HasKey(x => new { x.CategoryId, x.MovieId });
+            ///*Movie Category*/
+            //modelBuilder.Entity<MovieCategory>()
+            //    .HasKey(x => new { x.CategoryId, x.MovieId });
 
-            modelBuilder.Entity<MovieCategory>()
-                .HasOne(mc => mc.Category)
-                .WithMany(m => m.MovieCategories)
-                .HasForeignKey(mc => mc.CategoryId);
+            //modelBuilder.Entity<MovieCategory>()
+            //    .HasOne<Category>(mc => mc.Category)
+            //    .WithMany(m => m.MovieCategories)
+            //    .HasForeignKey(mc => mc.CategoryId);
 
-            modelBuilder.Entity<MovieCategory>()
-                .HasOne(mc => mc.Movie)
-                .WithMany(m => m.MovieCategories)
-                .HasForeignKey(mc => mc.MovieId);
-            /*Movie Category*/
+            //modelBuilder.Entity<MovieCategory>()
+            //    .HasOne<Movie>(mc => mc.Movie)
+            //    .WithMany(m => m.MovieCategories)
+            //    .HasForeignKey(mc => mc.MovieId);
+            ///*Movie Category*/
 
-            /*Movie Genre*/
-            modelBuilder.Entity<MovieGenre>()
-                .HasKey(x => new { x.GenreId, x.MovieId });
+            ///*Movie Genre*/
+            //modelBuilder.Entity<MovieGenre>()
+            //    .HasKey(x => new { x.GenreId, x.MovieId });
 
-            modelBuilder.Entity<MovieGenre>()
-                .HasOne(mg => mg.Genre)
-                .WithMany(m => m.MovieGenres)
-                .HasForeignKey(mg => mg.GenreId);
+            //modelBuilder.Entity<MovieGenre>()
+            //    .HasOne<Genre>(mg => mg.Genre)
+            //    .WithMany(m => m.MovieGenres)
+            //    .HasForeignKey(mg => mg.GenreId);
 
-            modelBuilder.Entity<MovieGenre>()
-                .HasOne(mc => mc.Movie)
-                .WithMany(m => m.MovieGenres)
-                .HasForeignKey(mg => mg.MovieId);
+            //modelBuilder.Entity<MovieGenre>()
+            //    .HasOne<Movie>(mc => mc.Movie)
+            //    .WithMany(m => m.MovieGenres)
+            //    .HasForeignKey(mg => mg.MovieId);
 
-            /*Movie Genre*/
+            ///*Movie Genre*/
 
-            /*Movie Tag*/
-            modelBuilder.Entity<MovieTag>()
-                .HasKey(x => new { x.TagId, x.MovieId });
+            ///*Movie Tag*/
+            //modelBuilder.Entity<MovieTag>()
+            //    .HasKey(x => new { x.TagId, x.MovieId });
 
-            modelBuilder.Entity<MovieTag>()
-                .HasOne(mg => mg.Tag)
-                .WithMany(m => m.MovieTags)
-                .HasForeignKey(mg => mg.TagId);
+            //modelBuilder.Entity<MovieTag>()
+            //    .HasOne<Tag>(mg => mg.Tag)
+            //    .WithMany(m => m.MovieTags)
+            //    .HasForeignKey(mg => mg.TagId);
 
-            modelBuilder.Entity<MovieTag>()
-                .HasOne(mc => mc.Movie)
-                .WithMany(m => m.MovieTags)
-                .HasForeignKey(mg => mg.MovieId);
+            //modelBuilder.Entity<MovieTag>()
+            //    .HasOne<Movie>(mc => mc.Movie)
+            //    .WithMany(m => m.MovieTags)
+            //    .HasForeignKey(mg => mg.MovieId);
 
-            /*Movie Tag*/
+            ///*Movie Tag*/
 
             modelBuilder.ApplyConfiguration(new MovieMap());
             modelBuilder.ApplyConfiguration(new CategoryMap());
