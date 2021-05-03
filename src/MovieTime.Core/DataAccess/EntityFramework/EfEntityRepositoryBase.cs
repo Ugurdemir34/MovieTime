@@ -67,6 +67,20 @@ namespace MovieTime.Core.DataAccess.EntityFramework
                 return await query.ToListAsync();
             }
         }
+
+        public async Task<IList<TEntity>> GetListAsync(Expression<Func<TEntity, bool>> filter)
+        {
+            using (var context = new TContext())
+            {
+                IQueryable<TEntity> query = context.Set<TEntity>();
+                if (filter != null)
+                {
+                    query = query.Where(filter);
+                }                
+                return await query.ToListAsync();
+            }
+        }
+
         public async Task<TEntity> UpdateAsync(TEntity entity)
         {
             using (var context = new TContext())
