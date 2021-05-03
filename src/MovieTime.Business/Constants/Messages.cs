@@ -10,6 +10,10 @@ namespace MovieTime.Business.Constants
     {
         /*Movie*/
         public static string MovieList = "Filmler Başarıyla Listelendi !";
-        /*Movie*/ 
+        /*Movie*/
+
+        /*Category*/
+        public static string CategoryList = "Kategoriler Başarıyla Listelendi !";
+        /*Category*/
     }
 }

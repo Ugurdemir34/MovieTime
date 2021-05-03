@@ -17,6 +17,9 @@ namespace MovieTime.Business.DependencyResolvers.Autofac
         {
             builder.RegisterType<MovieManager>().As<IMovieService>();
             builder.RegisterType<EfMovieDal>().As<IMovieDal>();
+
+            builder.RegisterType<CategoryManager>().As<ICategoryService>();
+            builder.RegisterType<EfCategoryDal>().As<ICategoryDal>();
         }
     }
 }
