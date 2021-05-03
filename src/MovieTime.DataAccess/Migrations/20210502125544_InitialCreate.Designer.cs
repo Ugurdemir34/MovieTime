@@ -10,7 +10,7 @@ using MovieTime.DataAccess.Concrete.Contexts;
 namespace MovieTime.DataAccess.Migrations
 {
     [DbContext(typeof(MovieTimeContext))]
-    [Migration("20210502051023_InitialCreate")]
+    [Migration("20210502125544_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,7 +33,7 @@ namespace MovieTime.DataAccess.Migrations
 
                     b.HasIndex("MoviesId");
 
-                    b.ToTable("CategoryMovie");
+                    b.ToTable("MovieCategories");
                 });
 
             modelBuilder.Entity("GenreMovie", b =>
@@ -48,7 +48,7 @@ namespace MovieTime.DataAccess.Migrations
 
                     b.HasIndex("MoviesId");
 
-                    b.ToTable("GenreMovie");
+                    b.ToTable("MovieGenres");
                 });
 
             modelBuilder.Entity("MovieTag", b =>
@@ -63,7 +63,7 @@ namespace MovieTime.DataAccess.Migrations
 
                     b.HasIndex("TagsId");
 
-                    b.ToTable("MovieTag");
+                    b.ToTable("MovieTags");
                 });
 
             modelBuilder.Entity("MovieTime.Entities.Concrete.Admin", b =>
@@ -124,15 +124,15 @@ namespace MovieTime.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("2ccaeb78-b0ce-49e3-887e-18ddd7ae57e7"),
-                            CreationDate = new DateTime(2021, 5, 2, 8, 10, 23, 106, DateTimeKind.Local).AddTicks(6189),
+                            Id = new Guid("b5d87677-9c91-4346-a04c-36d6f0283c0e"),
+                            CreationDate = new DateTime(2021, 5, 2, 15, 55, 44, 196, DateTimeKind.Local).AddTicks(7991),
                             Description = "Yabancı Filmler",
                             Name = "Yabancı"
                         },
                         new
                         {
-                            Id = new Guid("4ef02072-a4c8-441e-9c2a-b04c4a0f9ec1"),
-                            CreationDate = new DateTime(2021, 5, 2, 8, 10, 23, 108, DateTimeKind.Local).AddTicks(662),
+                            Id = new Guid("db7cabf9-00b0-4553-884d-8c3083f2777a"),
+                            CreationDate = new DateTime(2021, 5, 2, 15, 55, 44, 198, DateTimeKind.Local).AddTicks(9527),
                             Description = "4K Filmler",
                             Name = "4K"
                         });
@@ -191,15 +191,15 @@ namespace MovieTime.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("4b115b0e-8b02-4833-ae50-9b7b2a2f537d"),
-                            CreationDate = new DateTime(2021, 5, 2, 8, 10, 23, 111, DateTimeKind.Local).AddTicks(1957),
+                            Id = new Guid("7a4c6ded-f0ae-4ff4-9987-017ff60d368b"),
+                            CreationDate = new DateTime(2021, 5, 2, 15, 55, 44, 203, DateTimeKind.Local).AddTicks(3382),
                             Description = "Aile Filmleri",
                             Name = "Aile"
                         },
                         new
                         {
-                            Id = new Guid("58412ea7-36eb-4c94-9032-c03860030df9"),
-                            CreationDate = new DateTime(2021, 5, 2, 8, 10, 23, 111, DateTimeKind.Local).AddTicks(2555),
+                            Id = new Guid("74d0f03c-79d0-4232-ad2e-bc2f47f14573"),
+                            CreationDate = new DateTime(2021, 5, 2, 15, 55, 44, 203, DateTimeKind.Local).AddTicks(4506),
                             Description = "Fantastik Filmler",
                             Name = "Fantastik"
                         });
@@ -276,15 +276,15 @@ namespace MovieTime.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("ae9b7b9d-7888-4bca-827e-c50b2e5755a7"),
-                            CreationDate = new DateTime(2021, 5, 2, 8, 10, 23, 112, DateTimeKind.Local).AddTicks(2076),
+                            Id = new Guid("d49265a4-2d23-4193-9a96-de53d4cdb9a2"),
+                            CreationDate = new DateTime(2021, 5, 2, 15, 55, 44, 204, DateTimeKind.Local).AddTicks(8574),
                             Description = "HarryPotter Tagi",
                             Name = "Harry Potter Serisi"
                         },
                         new
                         {
-                            Id = new Guid("fe654997-0c93-4125-8bfb-8d550c9c80ef"),
-                            CreationDate = new DateTime(2021, 5, 2, 8, 10, 23, 112, DateTimeKind.Local).AddTicks(2658),
+                            Id = new Guid("2746d4d5-82c0-4021-8b6d-526fefb61e17"),
+                            CreationDate = new DateTime(2021, 5, 2, 15, 55, 44, 204, DateTimeKind.Local).AddTicks(9228),
                             Description = "HarryPotter Tagi2",
                             Name = "Harry Potter Filmleri İzle"
                         });

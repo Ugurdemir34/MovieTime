@@ -10,23 +10,22 @@ namespace MovieTime.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MoviesController : ControllerBase
+    public class CategoriesController : ControllerBase
     {
-        private IMovieService _movieService;
-        public MoviesController(IMovieService movieService)
+        private ICategoryService _categoryService;
+        public CategoriesController(ICategoryService categoryService)
         {
-            _movieService = movieService;
+            _categoryService = categoryService;
         }
-        [HttpGet("getmovies")]
+        [HttpGet("getcategories")]
         public async Task<IActionResult> GetMovies()
         {
-            var model =await _movieService.GetAll();
-            if(model.Success)
+            var model = await _categoryService.GetAll();
+            if (model.Success)
             {
                 return Ok(model.Data);
             }
             return BadRequest(model.Message);
         }
-        
     }
 }
