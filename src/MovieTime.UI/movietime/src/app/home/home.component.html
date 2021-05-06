@@ -1,0 +1,81 @@
+<main>
+  <div class="position-relative">
+    <!-- Hero for FREE version -->
+    <section class="section section-lg section-shaped pb-250">
+      <!-- Background circles -->
+      <div class="shape shape-style-1 shape-primary">
+        
+      </div>
+      <div class="container shape-container d-flex align-items-center py-lg">
+        <div class="col px-0">
+          <div class="row align-items-center justify-content-center">
+            <div class="col-lg-12 text-center">
+            
+              <div class="row row-grid">
+                <div class="col-lg-12">
+                 <app-moviecarousel></app-moviecarousel>
+                </div>             
+              </div>                          
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- SVG separator -->
+      <div class="separator separator-bottom separator-skew zindex-100">
+        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+          <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
+      </div>
+    </section>
+  </div>
+  <section class="section section-lg pt-lg-0 mt--200">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-12">
+          <div class="row row-grid">
+             <!-- <app-moviecard [movie]="movie" *ngFor="let movie of movies" style="width: fit-content" ></app-moviecard> -->
+             <div class="col-lg-4" *ngFor="let movie of movies | paginate:{id:'listing_pagination',itemsPerPage:3,currentPage:page,totalItems:totalRecords}" >
+               
+              <div class="card card-lift--hover shadow border-0">
+                  <div class="card-body py-5">      
+                      <img src="{{movie.thumbnail}}" alt="Raised image" class="img-fluid rounded shadow-lg mb-3" style="width: 250px;">
+                    
+                    <h5 class="text-primary text-uppercase">{{movie.title}}</h5>
+                    <h6 *ngFor="let genre of movie.genres" style="float: left;" >{{genre.name}} |</h6><br>
+                   
+                    <p class="description mt-3">{{movie.description.substr(0,200)}}  devamını oku...</p>
+                    <div>
+                      Kategori<br>
+                      <span *ngIf="movie.categories?.length<1" >
+                        -
+                      </span>
+                      <span *ngFor="let category of movie.categories" class="badge badge-pill badge-primary">
+                        {{category.name}}
+                      </span> <br>      
+                      Etiketler<br>
+                      <span *ngIf="movie.tags?.length<1" >
+                        -
+                      </span>
+                      <span *ngFor="let tag of movie.tags" class="badge badge-pill badge-primary">
+                        #{{tag.name}}
+                      </span>           
+                    </div>
+                    <a href="javascript:void(0)" class="btn btn-primary mt-4">Daha fazla</a>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>          
+    
+  </section>
+  <div class="container">
+    <!-- <pagination-controls id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="page=$event"></pagination-controls> -->
+    <ngb-pagination  [collectionSize]="paginationLimit" [(page)]="page" aria-label="Default pagination" [boundaryLinks]="true">
+      <ng-template ngbPaginationPrevious><i _ngcontent-c9="" class="fa fa-angle-left"></i></ng-template>
+      <ng-template ngbPaginationNext><i _ngcontent-c9="" class="fa fa-angle-right"></i></ng-template>
+    </ngb-pagination>
+  </div>
+</main>

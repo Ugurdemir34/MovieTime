@@ -1,0 +1,17 @@
+<div class="col-lg-4">
+<div class="card card-lift--hover shadow border-0">
+    <div class="card-body py-5">      
+        <img src="{{movie.thumbnail}}" alt="Raised image" class="img-fluid rounded shadow-lg mb-3" style="width: 250px;">
+      
+      <h6 class="text-primary text-uppercase">{{movie.title}}</h6>
+     
+      <p class="description mt-3">{{movie.description.substr(0,100)}}  devamını oku...</p>
+      <div>
+        <span *ngFor="let category of movie.categories" class="badge badge-pill badge-primary">
+          {{category.name}}
+        </span>             
+      </div>
+      <a href="javascript:void(0)" class="btn btn-primary mt-4">Daha fazla</a>
+    </div>
+  </div>
+</div>
