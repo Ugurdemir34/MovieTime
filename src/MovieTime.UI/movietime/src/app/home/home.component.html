@@ -37,8 +37,11 @@
              <div class="col-lg-4" *ngFor="let movie of movies | paginate:{id:'listing_pagination',itemsPerPage:3,currentPage:page,totalItems:totalRecords}" >
                
               <div class="card card-lift--hover shadow border-0">
-                  <div class="card-body py-5">      
-                      <img src="{{movie.thumbnail}}" alt="Raised image" class="img-fluid rounded shadow-lg mb-3" style="width: 250px;">
+                <div class="card-img">
+                  <img src="{{movie.thumbnail}}" alt="Raised image" class="img-fluid rounded shadow-lg mb-3" >
+                </div>
+                  <div class="card-body py-2">      
+                     
                     
                     <h5 class="text-primary text-uppercase">{{movie.title}}</h5>
                     <h6 *ngFor="let genre of movie.genres" style="float: left;" >{{genre.name}} |</h6><br>

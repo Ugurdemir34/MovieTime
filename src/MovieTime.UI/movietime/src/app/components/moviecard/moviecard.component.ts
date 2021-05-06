@@ -4,7 +4,7 @@ import { Movies } from 'src/app/models/movies';
 @Component({
   selector: 'app-moviecard',
   templateUrl: './moviecard.component.html',
-  styleUrls: ['./moviecard.component.css']
+  styleUrls: ['./moviecard.component.scss']
 })
 export class MoviecardComponent implements OnInit {
 
