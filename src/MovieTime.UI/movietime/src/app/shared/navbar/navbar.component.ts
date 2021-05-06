@@ -3,6 +3,8 @@ import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import { Location, PopStateEvent } from '@angular/common';
 import { CategoryService } from 'src/app/services/category.service';
 import { Categories, CategoriesEntity } from 'src/app/models/categories';
+import { Movies, MoviesEntity } from 'src/app/models/movies'
+import { HomeService } from 'src/app/services/home.service';
 
 @Component({
     selector: 'app-navbar',
@@ -14,12 +16,21 @@ export class NavbarComponent implements OnInit {
     private lastPoppedUrl: string;
     private yScrollStack: number[] = [];
     categories:CategoriesEntity[];
-    constructor(public location: Location, private router: Router,private categoryService:CategoryService) {
+    movies:MoviesEntity[];
+    searchedMovies:MoviesEntity[];
+    constructor(public location: Location, private router: Router,private categoryService:CategoryService,private movieService:HomeService) {
         this.categoryService.getCategories().subscribe((resp:Categories)=>{
             this.categories = resp.categories;
         })
+        this.movieService.getMovies().subscribe((resp:Movies) =>{
+            this.movies = resp.movies;
+        })
     }
-
+    movieSearch(event:any)
+    {
+        this.searchedMovies =this.movies.filter(i=>i.title.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()));
+       console.log(this.searchedMovies);
+    }
     ngOnInit() {
        
       this.router.events.subscribe((event) => {

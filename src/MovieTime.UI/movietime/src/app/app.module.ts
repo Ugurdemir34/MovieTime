@@ -17,6 +17,7 @@ import { HomeModule } from './home/home.module';
 import { LoginComponent } from './login/login.component';
 import { CategorylistComponent } from './components/categorylist/categorylist.component';
 import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
