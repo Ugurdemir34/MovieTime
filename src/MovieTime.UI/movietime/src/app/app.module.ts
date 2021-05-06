@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
@@ -17,7 +17,8 @@ import { HomeModule } from './home/home.module';
 import { LoginComponent } from './login/login.component';
 import { CategorylistComponent } from './components/categorylist/categorylist.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,11 @@ import { HttpClientModule } from '@angular/common/http';
     RouterModule,
     AppRoutingModule,
     HomeModule,
-    HttpClientModule
+    HttpClientModule,
+    NoopAnimationsModule,    
+    FormsModule,
+    ReactiveFormsModule,
+    AutocompleteLibModule
   ],
   providers: [],
   bootstrap: [AppComponent]

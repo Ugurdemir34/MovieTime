@@ -39,10 +39,41 @@
       
       </ul>   
       <ul class="navbar-nav ml-lg-auto">
-        <li class="nav-item" placement="bottom-right" >
-          <div class="form-group" >
-            <input type="text" (keypress)="movieSearch($event)" placeholder="Film Ara" class="form-control" />
-          </div>
+        <li class="nav-item" placement="bottom-right" >               
+            <!-- <input type="text" (keypress)="movieSearch($event)" placeholder="Film Ara" class="form-control" />               -->
+            <div class="ng-autocomplete">
+              <ng-autocomplete
+                [data]="movies"
+                placeholder="Film Ara"
+                [searchKeyword]="keyword"
+                (selected)='selectEvent($event)'
+                (inputChanged)='onChangeSearch($event)'
+                (inputFocused)='onFocused($event)'
+                [itemTemplate]="itemTemplate"
+                [notFoundTemplate]="notFoundTemplate" >                                 
+              </ng-autocomplete>
+              
+              <ng-template #itemTemplate let-item>
+                <div class="card mb-3" style="max-height: 200px;" >
+                  <div class="row g-0">
+                    <div class="col-md-4">
+                      <img src="{{item.thumbnail}}" alt="..." class="img-fluid">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title" [innerHtml]="item.title"></h5>
+                        <p class="card-text">{{item.description.substr(0,100)}}...</p>
+                        <p class="card-text"><small class="text-muted">Imdb : {{item.imdb}}</small></p>       
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+              
+              <ng-template #notFoundTemplate let-notFound>
+              <div [innerHTML]="notFound"></div>
+              </ng-template>
+              </div>
         </li>     
       </ul>   
     </div>
