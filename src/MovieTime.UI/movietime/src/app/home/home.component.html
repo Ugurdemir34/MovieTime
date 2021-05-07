@@ -56,6 +56,9 @@
                     <!-- <h4>Oyuncular</h4> -->
                     <h6>{{movie.actors}}</h6>
                   </div>
+                  <div class="tags">
+                    <span *ngFor="let tags of movie.tags" >#{{tags.name}}</span>
+                  </div>
                 </div>
               
               </div>
