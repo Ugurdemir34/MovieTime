@@ -2,6 +2,7 @@
 using MovieTime.Business.Constants;
 using MovieTime.Core.Utilities.Results;
 using MovieTime.DataAccess.Abstract;
+using MovieTime.Entities.Concrete;
 using MovieTime.Entities.Dtos;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,12 @@ namespace MovieTime.Business.Concrete
         {
             _movieDal = movieDal;
         }
+
+        public async void Add(Movie movie)
+        {
+            await _movieDal.AddAsync(movie);
+        }
+
         public async Task<IDataResult<MovieListDto>> GetAll()
         {
              var movieList =await _movieDal.GetListAsync(null, m=>m.Admin,m=>m.Comments, m => m.Tags, m => m.Categories, m => m.Genres);

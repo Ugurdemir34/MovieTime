@@ -1,4 +1,5 @@
 ﻿using MovieTime.Core.Utilities.Results;
+using MovieTime.Entities.Concrete;
 using MovieTime.Entities.Dtos;
 using System;
 using System.Collections.Generic;
@@ -11,5 +12,6 @@ namespace MovieTime.Business.Abstract
     public interface IMovieService
     {
         Task<IDataResult<MovieListDto>> GetAll();
+        void Add(Movie movie);
     }
 }
