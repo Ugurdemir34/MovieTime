@@ -10,6 +10,7 @@ import {MoviecardComponent} from '../components/moviecard/moviecard.component';
 import {MoviecarouselComponent} from '../components/moviecarousel/moviecarousel.component';
 import { SectionsModule } from '../sections/sections.module';
 import {NgxPaginationModule} from 'ngx-pagination'
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 @NgModule({
     imports: [
         CommonModule,
@@ -18,7 +19,8 @@ import {NgxPaginationModule} from 'ngx-pagination'
         RouterModule,
         SectionsModule,
         NgbModule,
-        NgxPaginationModule
+        NgxPaginationModule,
+        SlickCarouselModule
      
     ],
     declarations: [ HomeComponent,MoviecardComponent,MoviecarouselComponent ],

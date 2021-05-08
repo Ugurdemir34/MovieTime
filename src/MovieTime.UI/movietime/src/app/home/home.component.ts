@@ -22,6 +22,18 @@ export class HomeComponent implements OnInit {
     page:Number=1;
     paginationLimit;
     movies:MoviesEntity[];
+    slides = [
+        {img: "http://placehold.it/350x350/000000"},
+        {img: "http://placehold.it/350x350/111111"},
+        {img: "http://placehold.it/350x350/333333"},
+        {img: "http://placehold.it/350x350/666666"},
+        {img: "http://placehold.it/350x350/666666"},
+        {img: "http://placehold.it/350x350/666666"},
+        {img: "http://placehold.it/350x350/666666"},
+        {img: "http://placehold.it/350x350/666666"},
+        {img: "http://placehold.it/350x350/666666"},
+      ];
+      slideConfig = {"slidesToShow": 4, "slidesToScroll": 4};
     constructor(private homeservices:HomeService) { 
       this.homeservices.getMovies().subscribe((data:Movies)=>{
           console.log(data.movies);

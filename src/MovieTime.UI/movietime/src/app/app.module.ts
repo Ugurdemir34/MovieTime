@@ -19,6 +19,7 @@ import { CategorylistComponent } from './components/categorylist/categorylist.co
 import { HttpClientModule } from '@angular/common/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +30,7 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
     FooterComponent,
     LoginComponent,
     CategorylistComponent,
+   
    
   ],
   imports: [
@@ -42,7 +44,7 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
     NoopAnimationsModule,    
     FormsModule,
     ReactiveFormsModule,
-    AutocompleteLibModule
+    AutocompleteLibModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
