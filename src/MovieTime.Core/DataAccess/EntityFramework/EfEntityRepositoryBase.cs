@@ -18,6 +18,7 @@ namespace MovieTime.Core.DataAccess.EntityFramework
             using (var context = new TContext())
             {
                 await context.Set<TEntity>().AddAsync(entity);
+                await context.SaveChangesAsync();
                 return entity;
             }
         }       
