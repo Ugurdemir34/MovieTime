@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
           console.log(data.movies);
           this.movies = data.movies;
           this.totalRecords=data.movies.length;
-          this.paginationLimit =Math.round(((this.totalRecords / 3)))*10; 
+          this.paginationLimit =Math.round(((this.totalRecords / 6)))*10; 
           console.log(this.paginationLimit);
       })
       
