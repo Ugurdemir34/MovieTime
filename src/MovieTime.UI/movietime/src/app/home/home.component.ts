@@ -33,7 +33,25 @@ export class HomeComponent implements OnInit {
         {img: "http://placehold.it/350x350/666666"},
         {img: "http://placehold.it/350x350/666666"},
       ];
-      slideConfig = {"slidesToShow": 4, "slidesToScroll": 4};
+      slideConfig = {"slidesToShow": 4, "slidesToScroll": 1,'responsive': 
+        [
+            {
+                'breakpoint': 400,
+                'settings': {'slidesToShow': 1}            
+            },
+            {
+                'breakpoint': 500,
+                'settings': {'slidesToShow': 2}
+            },
+            {
+                'breakpoint':750,
+                'settings':{'slidesToShow':2}
+            },
+            {
+                'breakpoint':800,
+                'settings':{'slidesToShow':3}
+            }
+    ]};
     constructor(private homeservices:HomeService) { 
       this.homeservices.getMovies().subscribe((data:Movies)=>{
           console.log(data.movies);
